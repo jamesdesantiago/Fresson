@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image, ImageFilter, ImageEnhance, ImageOps
 import numpy as np
+import io
 
 def simulate_brushstrokes(image, strength=1.0):
     """
