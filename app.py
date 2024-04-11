@@ -73,6 +73,7 @@ st.title('Fresson Quadrichromy Effect Simulator')
 
 uploaded_file = st.file_uploader("Choose an image...", type=['jpg', 'jpeg', 'png'])
 if uploaded_file is not None:
+    # Convert the uploaded file to an image object directly
     image = Image.open(uploaded_file).convert("RGB")
 
     painting_like = st.checkbox('Apply painting-like enhancements', value=True)
@@ -88,7 +89,8 @@ if uploaded_file is not None:
         # Display the processed image
         st.image(result_image, caption='Processed Image', use_column_width=True)
 
-        # Save the result image to a temporary file and provide a download link
-        result_image.save('processed_image.jpg')
-        with open('processed_image.jpg', 'rb') as file:
-            st.download_button(label='Download Result', data=file, file_name='processed_image.jpg', mime='image/jpeg')
+        # Save the result image to a bytes buffer and provide a download link
+        buf = io.BytesIO()  # You need to import io at the top
+        result_image.save(buf, format='JPEG')
+        buf.seek(0)
+        st.download_button(label='Download Result', data=buf, file_name='processed_image.jpg', mime='image/jpeg')
