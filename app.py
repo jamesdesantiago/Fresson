@@ -34,7 +34,7 @@ def enhanced_color_adjustment(image):
     image = ImageEnhance.Contrast(image).enhance(contrast_factor)
     return image
 
-def fresson_quadrichromy_effect(image_path, texture_path=None, painting_like=True):
+def fresson_quadrichromy_effect(image, texture_path=None, painting_like=True):
     # Load the image
     image = Image.open(image_path).convert("RGB")
     
