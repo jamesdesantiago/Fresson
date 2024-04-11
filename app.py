@@ -35,6 +35,20 @@ def enhanced_color_adjustment(image):
     image = ImageEnhance.Contrast(image).enhance(contrast_factor)
     return image
 
+def random_color_adjustment(image):
+    """
+    Apply random, less intense color adjustments.
+    """
+    # These adjustments are less intense compared to the enhanced version
+    color_factor = np.random.uniform(0.95, 1.05)
+    brightness_factor = np.random.uniform(0.95, 1.05)
+    contrast_factor = np.random.uniform(1.0, 1.1)
+
+    image = ImageEnhance.Color(image).enhance(color_factor)
+    image = ImageEnhance.Brightness(image).enhance(brightness_factor)
+    image = ImageEnhance.Contrast(image).enhance(contrast_factor)
+    return image
+
 def fresson_quadrichromy_effect(image, texture_path=None, painting_like=True):
 
     # Apply random nuanced color adjustments and simulate the pigment layering
