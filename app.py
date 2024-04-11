@@ -35,9 +35,7 @@ def enhanced_color_adjustment(image):
     return image
 
 def fresson_quadrichromy_effect(image, texture_path=None, painting_like=True):
-    # Load the image
-    image = Image.open(image).convert("RGB")
-    
+
     # Apply random nuanced color adjustments and simulate the pigment layering
     image = enhanced_color_adjustment(image) if painting_like else random_color_adjustment(image)
     
